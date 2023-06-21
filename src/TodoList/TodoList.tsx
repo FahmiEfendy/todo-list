@@ -32,6 +32,11 @@ const TodoList = (props: TodoListProps) => {
     setEnteredTitle("");
   };
 
+  const deleteTodoHandler = (id: string) => {
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  };
+
   return (
     <React.Fragment>
       <div>
@@ -48,6 +53,7 @@ const TodoList = (props: TodoListProps) => {
         return (
           <div key={todo.id}>
             <p>{todo.title}</p>
+            <button onClick={() => deleteTodoHandler(todo.id)}>x</button>
           </div>
         );
       })}
