@@ -25,11 +25,10 @@ function App() {
   const [todos, setTodos] = useState(todosArray);
 
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">Todo List App</h1>
-      <h3>What's your plan for today?</h3>
+    <div className="container max-w-4xl flex flex-col mx-auto my-10 rounded-xl py-10 px-5 bg-zinc-400">
+      <h1 className="text-3xl font-bold text-center my-5">Todo List</h1>
       <TodoList todos={todos} setTodos={setTodos} />
-    </>
+    </div>
   );
 }
 
