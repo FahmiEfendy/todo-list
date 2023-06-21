@@ -12,7 +12,7 @@ const todosArray = [
   {
     id: "2",
     title: "Title 2",
-    completed: false,
+    completed: true,
   },
   {
     id: "3",
