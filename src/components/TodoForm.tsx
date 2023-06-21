@@ -52,7 +52,7 @@ const TodoForm = (props: TodoFormProps) => {
   };
 
   return (
-    <div className="mb-5 grid grid-flow-row-dense grid-cols-12">
+    <div className="mb-5 grid grid-flow-row-dense grid-cols-12 grid-rows-2 sm:grid-rows-1">
       <input
         type="text"
         name="title"
@@ -61,20 +61,22 @@ const TodoForm = (props: TodoFormProps) => {
         value={enteredTitle}
         onChange={(e) => titleChangeHandler(e.target.value)}
         className={`${
-          editId !== "" ? "col-span-8" : "col-span-10"
-        } rounded-md p-3`}
+          editId !== "" ? "sm:col-span-8" : "sm:col-span-10"
+        } col-span-12 rounded-md p-3 mb-3 sm:mb-0`}
       />
       {editId !== "" && (
         <button
           onClick={cancelEditHandler}
-          className="border-zinc-950 border-2 bg-zinc-50 text-zinc-950  rounded-xl ms-2 col-span-2"
+          className="border-zinc-950 border-2 bg-zinc-50 text-zinc-950  rounded-xl ms-2 col-span-6 sm:col-span-2"
         >
           Cancel
         </button>
       )}
       <button
         onClick={submitTodoHandler}
-        className="bg-zinc-950 text-zinc-50 rounded-xl ms-2 col-span-2"
+        className={`bg-zinc-950 text-xs text-zinc-50 rounded-xl sm:ms-2 sm:col-span-2 ${
+          editId === "" ? "col-span-12" : "col-span-6"
+        }`}
       >
         <p>{editId === "" ? "Add Todo" : "Update Todo"}</p>
       </button>
