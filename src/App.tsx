@@ -3,7 +3,7 @@ import "./App.css";
 function App() {
   return (
     <>
-      <h1>Todo List App</h1>
+      <h1 className="text-3xl font-bold underline">Todo List App</h1>
     </>
   );
 }
