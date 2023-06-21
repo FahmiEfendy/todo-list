@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import "./App.css";
-import TodoList from "./TodoList/TodoList";
+import TodoList from "./components/TodoList";
 
 const todosArray = [
   {
@@ -27,6 +27,7 @@ function App() {
   return (
     <>
       <h1 className="text-3xl font-bold underline">Todo List App</h1>
+      <h3>What's your plan for today?</h3>
       <TodoList todos={todos} setTodos={setTodos} />
     </>
   );
