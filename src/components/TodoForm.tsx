@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { useEffect, useState } from "react";
 
 import { ITodos } from "../interfaces/todo-interfaces";
 
@@ -15,6 +16,8 @@ const TodoForm = (props: TodoFormProps) => {
   const { editId, setEditId, enteredTitle, setEnteredTitle, todos, setTodos } =
     props;
 
+  const [isError, setIsError] = useState(false);
+
   const titleChangeHandler = (e: string) => {
     setEnteredTitle(e);
   };
@@ -30,6 +33,8 @@ const TodoForm = (props: TodoFormProps) => {
       title: enteredTitle,
       completed: false,
     };
+
+    if (enteredTitle === "") return setIsError(true);
 
     if (editId === "") {
       setTodos([...todos, newTodo]);
@@ -51,6 +56,10 @@ const TodoForm = (props: TodoFormProps) => {
     setEnteredTitle("");
   };
 
+  useEffect(() => {
+    if (enteredTitle.length > 0) setIsError(false);
+  }, [enteredTitle.length]);
+
   return (
     <div className="mb-5 grid grid-flow-row-dense grid-cols-12 grid-rows-2 sm:grid-rows-1">
       <input
@@ -67,19 +76,25 @@ const TodoForm = (props: TodoFormProps) => {
       {editId !== "" && (
         <button
           onClick={cancelEditHandler}
-          className="border-zinc-950 border-2 bg-zinc-50 text-zinc-950  rounded-xl ms-2 col-span-6 sm:col-span-2"
+          className="border-purple-700 border-1 bg-white text-purple-700  rounded-xl ms-2 col-span-6 sm:col-span-2"
         >
           Cancel
         </button>
       )}
       <button
         onClick={submitTodoHandler}
-        className={`bg-zinc-950 text-xs text-zinc-50 rounded-xl sm:ms-2 sm:col-span-2 ${
+        className={`bg-purple-700 text-smz  text-white rounded-xl sm:ms-2 sm:col-span-2 ${
           editId === "" ? "col-span-12" : "col-span-6"
         }`}
       >
         <p>{editId === "" ? "Add Todo" : "Update Todo"}</p>
       </button>
+
+      {isError && (
+        <span className="col-span-12 text-red-500 text-sm ms-2 mt-1 font-bold">
+          Input field cannot be empty!
+        </span>
+      )}
     </div>
   );
 };
