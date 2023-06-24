@@ -75,11 +75,11 @@ const TodoItem = (props: TodoItemProps) => {
             >
               {todo.title}
             </p>
-            <div className="ms-auto flex">
+            <div className="ms-auto flex my-auto">
               {!todo.completed && (
                 <button
                   onClick={() => editTodoHandler(todo.id)}
-                  className="me-2 bg-zinc-50 p-1 rounded-md"
+                  className="me-2 bg-zinc-50 p-1 rounded-md max-h-8"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +94,7 @@ const TodoItem = (props: TodoItemProps) => {
               )}
               <button
                 onClick={() => deleteTodoHandler(todo.id)}
-                className="bg-zinc-50 p-1 rounded-md"
+                className="bg-zinc-50 p-1 rounded-md max-h-8"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

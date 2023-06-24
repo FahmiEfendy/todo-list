@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import TodoForm from "./TodoForm";
 import TodoItem from "./TodoItem";
+import TodoFilter from "./TodoFilter";
 import { ITodos } from "../interfaces/todo-interfaces";
 
 interface TodoListProps {
@@ -33,6 +34,7 @@ const TodoList = (props: TodoListProps) => {
         enteredTitle={enteredTitle}
         setEnteredTitle={setEnteredTitle}
       />
+      <TodoFilter setTodos={setTodos} />
       <TodoItem setEditId={setEditId} todos={todos} setTodos={setTodos} />
     </React.Fragment>
   );
