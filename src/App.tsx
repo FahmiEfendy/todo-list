@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import "./App.css";
 import TodoList from "./components/TodoList";
 import { todosArray } from "./data/todosArray";
 
